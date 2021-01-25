@@ -4,7 +4,8 @@
   "description": "Covid-19 Vaccine middleware",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Manuel Fernández de Ginzo Muñoz",
   "license": "ISC",
