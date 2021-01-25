@@ -107,4 +107,4 @@ app.get('/data', (req, res) => {
   res.send({ data: data })
 })
 
-app.listen(3000)
+app.listen(process.env.PORT || 3000)
