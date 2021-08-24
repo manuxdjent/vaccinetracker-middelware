@@ -4,12 +4,14 @@ const fetch = require('node-fetch')
 const bodyParser = require('body-parser');
 var cors = require('cors');
 
+const apiUrl = 'https://disease.sh/v3/covid-19/vaccine';
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 const covid19VaccineData = async (req, res, next) => {
-  const response = await fetch('https://disease.sh/v3/covid-19/vaccine', {
+  const response = await fetch(apiUrl, {
     method: 'GET',
     headers: {
       'Content-Type' : 'application/json'
@@ -33,13 +35,13 @@ const mapVaccineDataPhase = (vaccineDataPhase) => {
   }
 }
 
-const mapPhases = (phases) => {
-  return phases.map(phase => {
+const mapTrialPhases = (trialPhases) => {
+  return trialPhases.map(trialPhase => {
     return {
-      name: phase.phase,
-      candidates: phase.candidates,
-      cssClass: getPhaseCssClass(phase.phase),
-      color: getPhaseColor(phase.phase)
+      name: trialPhase.phase,
+      candidates: trialPhase.candidates,
+      cssClass: getPhaseCssClass(trialPhase.phase),
+      color: getPhaseColor(trialPhase.phase)
     }
   })
 }
@@ -79,7 +81,7 @@ const getPhaseCssClass = (phase) => {
 }
 
 app.get('/phases', (req, res) => {
-  const phases = mapPhases(res.vaccineData.phases)
+  const phases = mapTrialPhases(res.vaccineData.phases)
   res.send(phases)
 })
 
