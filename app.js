@@ -40,7 +40,6 @@ const mapTrialPhases = (trialPhases) => {
     return {
       name: trialPhase.phase,
       candidates: trialPhase.candidates,
-      cssClass: getPhaseCssClass(trialPhase.phase),
       color: getPhaseColor(trialPhase.phase)
     }
   })
@@ -60,23 +59,6 @@ const getPhaseColor = (phase) => {
       return 'rgb(255 82 0 / 35%)'
     case 'Pre-clinical':
       return 'rgb(255 0 0 / 35%)'
-  }
-}
-
-const getPhaseCssClass = (phase) => {
-  switch(phase) {
-    case 'Phase 3':
-      return 'phase3'
-    case 'Phase 2/3':
-      return 'phase23'
-    case 'Phase 2':
-      return 'phase2'
-    case 'Phase 1/2':
-      return 'phase12'
-    case 'Phase 1':
-      return 'phase1'
-    case 'Pre-clinical':
-      return 'preClinical'
   }
 }
 
